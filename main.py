@@ -18,7 +18,8 @@ while len(guessed_states) < 50:
 
     if answer_state == "Exit":
         # 正解できなかったデータをCSV出力
-        missing_state = sorted(list(set(all_states) - set(guessed_states)))
+        # missing_state = sorted(list(set(all_states) - set(guessed_states)))
+        missing_state = [state for state in all_states if state not in guessed_states]
         missing_state = pd.DataFrame(missing_state)
         missing_state.to_csv("states_to_learn.csv")
         break
